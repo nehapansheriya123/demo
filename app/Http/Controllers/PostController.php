@@ -41,7 +41,7 @@ class PostController extends Controller
         ]);
 
         $this->post->storeOrUpdate($id = null, $data,$request);
-        return redirect()->route('post.index')->withSuccess('Post Created Successfully!');
+        return redirect()->route('post.index')->with('message','Post added Successfully');
     }
 
     public function show($id)
@@ -69,13 +69,13 @@ class PostController extends Controller
         ]);
 
         $this->post->storeOrUpdate($id, $data,$request);
-        return redirect()->route('post.index')->withSuccess('Post Updated Successfully!');
+        return redirect()->route('post.index')->with('message','Post Updated Successfully');
     }
 
     public function destroy($id)
     {   
         $this->post->destroyById($id);
-        return redirect()->route('post.index')->withSuccess('Post Deleted Successfully!');
+        return redirect()->route('post.index')->with('message','Post deleted Successfully');
     }
         public function search(Request $request)
         {

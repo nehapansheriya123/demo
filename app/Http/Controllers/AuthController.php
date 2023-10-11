@@ -30,7 +30,7 @@ public function store(Request $request)
     $credentials = $request->only('email', 'password');
     Auth::attempt($credentials);
     return redirect('/')
-    ->withSuccess('You have successfully registered & logged in!');
+    ->with('message','You have successfully registered!');
 }
 public function login()
 {
@@ -47,7 +47,7 @@ public function authenticate(Request $request)
         {
             $request->session()->regenerate();
             return redirect('/')
-                ->withSuccess('You have successfully logged in!');
+                ->with('message','You have successfully logged in!');
         }
 
         return back()->withErrors([
@@ -75,6 +75,6 @@ public function manage_post()
 public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('message','logout successfully!');
     }   
 }

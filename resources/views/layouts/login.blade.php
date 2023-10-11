@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+<x-success/>
 <main>
      <div class="mx-4">
                 <div
