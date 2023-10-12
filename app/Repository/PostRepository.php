@@ -46,6 +46,7 @@ class PostRepository implements IPostRepository
             $post->tags = $data['tags'];
             $post->job_description = $data['job_description'];
             $post->user_id = auth()->user()->id;
+            unlink("theme/".$post->company_logo);       
             $post->company_logo=Self::imagestore('company_logo',$request)?? $post->company_logo;
         $post->save();
         return $post;

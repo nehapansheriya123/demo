@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
-
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,8 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    $posts=Post::all();
+    return view('layouts.app',compact('posts'));
 });
 
 Route::get('register',[AuthController::class,'register'])->name('register');
